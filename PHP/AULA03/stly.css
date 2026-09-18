@@ -1,0 +1,26 @@
+body{
+    background-color: rgb(1, 1, 2);
+    margin: 0 auto;
+    text-align: center;
+}
+table {
+    border-collapse: collapse;
+    width: 400px;
+    font-family: sans-serif;
+
+}
+
+th {
+    border: 1px solid #080606;
+    padding: 8px;
+    text-align: right;
+    background-color: #2da9cf;
+    font-weight: bold;
+
+}
+td {
+    border: 1px solid #0a0606;
+    padding: 8px;
+    text-align: left;
+    background-color: #bb2222;
+}
