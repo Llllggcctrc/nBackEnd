@@ -61,12 +61,13 @@ function executarDemonstracao(): void
     echo "Peça de teste ciuriada (ID {$id}) com saldo inicial 10.\n\n";
     testar($dao, $id, 4, 'saida');    
     testar($dao, $id, 20, 'saida');   
-    testar($dao, $id, 5, 'entrada');  
-    testar($dao, $id, 3, 'invalido');  
+    testar($dao, $id, 5, 'entrada');
+    testar($dao, $id, 3, 'invalido');
+}
 
 try {
     executarDemonstracao();
 } catch (Throwable $erro) {
     error_log($erro->getMessage());
-    echo "Erro: não foi possível concluir a demonstração.\n";
+    echo "Erro: não foi possível concluir a demonstraxoo.\n";
 }
