@@ -1,0 +1,40 @@
+<?php
+declare(strict_types=1);
+
+require_once 'Ex00_Base.php';
+
+class ContaInvestimento extends ContaBancaria {
+    
+    public function __construct(Titular $titular) {
+        parent::__construct($titular);
+    }
+
+    public function sacar(float $valor): void {
+        throw new RegraNegocioException("Utilize o método resgatar() para investimentos.");
+    }
+
+    public function resgatar(float $valor, ContaBancaria $contaCorrente): void {
+        if ($valor > $this->saldo) {
+            throw new SaldoInsuficienteException($this->saldo, $valor);
+        }
+
+        $imposto = $this->calcularImpostoRegressivo($valor);
+        $valorLiquido = $valor - $imposto;
+
+        $this->saldo -= $valor;
+        $contaCorrente->depositar($valorLiquido);
+        
+        $this->registrarTransacao('Resgate', $valor, true);
+        $this->notificar("Resgate de R$ {$valor} realizado com imposto de R$ {$imposto}");
+    }
+
+    private function calcularImpostoRegressivo(float $valor): float {
+        if ($this->saldo > 50000) {
+            return $valor * 0.05; // 5% de taxa
+        }
+        if ($this->saldo > 10000) {
+            return $valor * 0.10; // 10% de taxa
+        }
+        return $valor * 0.15; // 15% de taxa
+    }
+}
