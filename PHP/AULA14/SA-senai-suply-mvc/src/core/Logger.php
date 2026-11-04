@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+namespace App\Core;
+
 //Classe de centralização de logs corporativos para persistência na raiz do projeto
 
 final class Logger{
@@ -19,7 +21,24 @@ final class Logger{
         file_put_contents($caminho . "/app.log", $linha, FILE_APPEND | LOCK_EX);
     }
 
+    //criar o métodos para identificar os logs ( auditoria, aviso, erro)
+    //Registro evento informativo de auditoria
+    public static function info(string $mensagem, array $contexto=[]): void {
+        self::gravar("INFO", $mensagem, $contexto);
+    }
+    //Registro de Aviso - Violação de Regra de Negócio
+    public static function aviso(string $mensagem, array $contexto=[]): void {
+        self::gravar("AVISO", $mensagem, $contexto);
+    }
+    //Registro de falha de erro - execução crítica
+    public static function erro(string $mensagem, array $contexto=[]): void {
+        self::gravar("ERRO", $mensagem, $contexto);
+    }
+
+    // obs: métodos ou atributos "static" -> são executados ou chamados diretamente pela classe
+    // sem a necessidade de instanciar um obj
+    // podemos fazer uma analogia a um obj descartável
+    // serve apenas para uma única tarefa e depois é jogado fora
+    // evita ocupar espaço na memória com objetos que não serão mais usados
+
 }
-
-
-?>
