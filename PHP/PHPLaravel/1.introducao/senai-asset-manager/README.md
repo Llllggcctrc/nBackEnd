@@ -134,4 +134,38 @@ Execute a sequência de 7 testes de validação técnica no laboratório:
    Execute `php artisan about` no terminal.  
    *Resultado Esperado:* Todos os indicadores técnicos devem estar validados em verde.
 
+   ---
+
+# Continucação do Projeto: construção  da Gestão de Parceiros Industriais (Módulo Cliente)
+
+crie o model  eo arquivo d emigração para a tabela `clientes`
+
+
+`php artisan make:model Cliente -m`
+
+-m => diretamente relaciada a migração do banco de dados
+
+## Gera e Implementar `ClienteController`
+
+`php artisan make: controller ClienteController --resource`
+
+é criado o aquivo 
+`app/http/controller/cliente/controller.php`
+
+
+
+> obs: Ao usarmos a flag `--resource` no comando artisan, 7 metodos são criados automaticamento, bastando preencher os métodos coms os elementos lógicos
+
+
+
+## Criamos a Rotas Mapeadas da API no Arquivo (`routes/web.php`)
+
+Depois de criar o model, executar a migração e implemetar o controller, devemos declarar as rotas do módulo da api
+
+podemos criar rotas customizadas ou rotas padrão usando o recursos `resource` do LARAVEL
+
+## Construção das Views usando o Blade 
+
+crie o
+
 
