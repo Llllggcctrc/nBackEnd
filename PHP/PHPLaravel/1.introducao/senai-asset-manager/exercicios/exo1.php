@@ -13,7 +13,6 @@ if (! is_file(__DIR__ . '/vendor/autoload.php')) {
 
 require __DIR__ . '/vendor/autoload.php';
 
-Simulador::iniciar();
 $roteador = Aplicacao::criar();
 
 echo "=== Exercício 1: rotas com parâmetro dinâmico ===\n\n";
@@ -27,5 +26,5 @@ $uris = [
 ];
 
 foreach ($uris as $uri) {
-    Simulador::relatar('GET', $uri, Simulador::requisitar($roteador, 'GET', $uri));
+    echo "GET {$uri}\n";
 }
